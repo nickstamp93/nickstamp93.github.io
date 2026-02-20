@@ -4,10 +4,11 @@ Portfolio-first GitHub Pages site.
 
 ## Customize
 
-- Update contact email in `index.html`
-- Replace placeholder project links
-- Set resume URL
-- Edit timeline and stack details
+- Edit all dynamic values in `site.config.js`
+- Set visibility with `flags.projects`, `flags.stack`, `flags.timeline`, `flags.resumeButton`
+- Update `links.email`, `links.resume`, `links.github`, `links.linkedin`
+- Replace placeholder project links/content
+- Leave `stack: []` to auto-build tech stack from project tags
 
 ## Run locally
 

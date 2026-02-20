@@ -32,7 +32,6 @@
         <p class="eyebrow" id="hero-eyebrow">Developer Portfolio</p>
         <h1>
           <span id="hero-heading">I build clean, fast products</span>
-          <span id="hero-heading-accent">for web and smart TV platforms.</span>
         </h1>
         <p class="hero-copy" id="hero-copy"></p>
         <div class="hero-actions">
@@ -45,7 +44,7 @@
       <section id="projects" class="section reveal">
         <div class="section-head">
           <h2>Featured Projects</h2>
-          <p>Selected work with clear outcomes and measurable impact.</p>
+          <p>Android-first products, multiplatform apps, and supporting web experiences.</p>
         </div>
         <div class="cards" id="projects-list"></div>
       </section>
@@ -53,7 +52,7 @@
       <section id="stack" class="section reveal">
         <div class="section-head">
           <h2>Tech Stack</h2>
-          <p>Tools I use regularly to ship production-ready software.</p>
+          <p>Core technologies I use for Android, multiplatform, and web delivery.</p>
         </div>
         <div class="pill-grid" id="stack-list"></div>
       </section>
@@ -72,9 +71,9 @@
           <p id="contact-pitch"></p>
         </div>
         <div class="contact-actions">
-          <a class="btn btn-primary" href="#" id="contact-email-link">you@example.com</a>
           <a class="btn btn-secondary" href="#" id="contact-github-link" target="_blank" rel="noreferrer">GitHub</a>
           <a class="btn btn-secondary" href="#" id="contact-linkedin-link" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn btn-primary contact-email-btn" href="#" id="contact-email-link">you@example.com</a>
         </div>
       </section>
     </main>
@@ -86,6 +85,7 @@
     <script src="site.config.js"></script>
     <script>
       const config = window.SITE_CONFIG || {};
+      const flags = config.flags || {};
       const profile = config.profile || {};
       const links = config.links || {};
 
@@ -101,6 +101,18 @@
         if (text) el.textContent = text;
       };
 
+      const toggleSection = (sectionId, shouldShow) => {
+        const section = document.getElementById(sectionId);
+        const navLink = document.querySelector(`.site-nav a[href="#${sectionId}"]`);
+        if (section) section.hidden = !shouldShow;
+        if (navLink) navLink.hidden = !shouldShow;
+      };
+
+      const toggleElement = (id, shouldShow) => {
+        const el = document.getElementById(id);
+        if (el) el.hidden = !shouldShow;
+      };
+
       const displayName = profile.name || "Developer";
       const title = profile.title || "Portfolio";
 
@@ -113,7 +125,6 @@
       setText("brand-name", displayName);
       setText("hero-eyebrow", profile.eyebrow);
       setText("hero-heading", profile.heroHeading);
-      setText("hero-heading-accent", profile.heroHeadingAccent);
       setText("hero-copy", profile.heroCopy);
       setText("contact-pitch", profile.contactPitch);
       setText("footer-name", displayName);
@@ -127,30 +138,57 @@
       setLink("contact-github-link", links.github);
       setLink("contact-linkedin-link", links.linkedin);
 
+      const projects = [...(config.projects || [])].sort(
+        (a, b) => (b.userBaseK || 0) - (a.userBaseK || 0)
+      );
+      const derivedStack = [
+        ...new Set(
+          projects.flatMap((project) =>
+            Array.isArray(project.tags) ? project.tags : []
+          )
+        )
+      ];
+      const stack = (config.stack || []).length > 0 ? config.stack : derivedStack;
+      const timeline = config.timeline || [];
+
+      const showProjects = flags.projects !== false && projects.length > 0;
+      const showStack = flags.stack !== false && stack.length > 0;
+      const showTimeline = flags.timeline !== false && timeline.length > 0;
+      const showResumeButton = flags.resumeButton !== false && Boolean(links.resume);
+
+      toggleSection("projects", showProjects);
+      toggleSection("stack", showStack);
+      toggleSection("timeline", showTimeline);
+      toggleElement("hero-resume-link", showResumeButton);
+
       const projectsList = document.getElementById("projects-list");
-      (config.projects || []).forEach((project) => {
+      projects.forEach((project) => {
         const article = document.createElement("article");
         article.className = "card";
         article.innerHTML = `
-          <h3>${project.title || ""}</h3>
+          <div class="card-head">
+            <img class="card-logo" src="${project.logo || "https://placehold.co/512x512"}" alt="${project.title || "Project"} logo" loading="lazy" />
+            <h3>${project.title || ""}</h3>
+            ${project.userBaseK ? `<span class="card-users">${project.userBaseK}K users</span>` : ""}
+          </div>
           <p>${project.description || ""}</p>
           <ul class="meta">
             ${(project.tags || []).map((tag) => `<li>${tag}</li>`).join("")}
           </ul>
-          <a href="${project.link || "#"}" class="card-link">${project.linkLabel || "View Project"}</a>
+          <a href="${project.link || "#"}" class="card-link" target="_blank" rel="noreferrer">${project.linkLabel || "View Project"}</a>
         `;
         projectsList.appendChild(article);
       });
 
       const stackList = document.getElementById("stack-list");
-      (config.stack || []).forEach((item) => {
+      stack.forEach((item) => {
         const pill = document.createElement("span");
         pill.textContent = item;
         stackList.appendChild(pill);
       });
 
       const timelineList = document.getElementById("timeline-list");
-      (config.timeline || []).forEach((item) => {
+      timeline.forEach((item) => {
         const article = document.createElement("article");
         article.innerHTML = `
           <h3>${item.role || ""}</h3>
