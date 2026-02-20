@@ -228,6 +228,16 @@ body {
   color: var(--muted);
 }
 
+.card-description {
+  margin: 0;
+  line-height: 1.45;
+  min-height: calc(1.45em * 3);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .meta {
   list-style: none;
   display: flex;

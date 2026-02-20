@@ -171,7 +171,7 @@
             <h3>${project.title || ""}</h3>
             ${project.userBaseK ? `<span class="card-users">${project.userBaseK}K users</span>` : ""}
           </div>
-          <p>${project.description || ""}</p>
+          <p class="card-description">${project.description || ""}</p>
           <ul class="meta">
             ${(project.tags || []).map((tag) => `<li>${tag}</li>`).join("")}
           </ul>

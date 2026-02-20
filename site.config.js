@@ -28,7 +28,7 @@ window.SITE_CONFIG = {
     {
       title: "Greek TV & Radio",
       description:
-        "Flagship Android app for live TV, radio, movies, series, and TV guide features.",
+        "Flagship Android app for live TV, radio, movies, series, and TV guide features all in one!",
       logo: "https://wsrv.nl/?url=https://play-lh.googleusercontent.com/d-Y82LSkTMCFSaC0JYo5SDifyZG1yEZLOr_QlrT9PYCqbLJRe0zs5QnOcQnpjAk0tg=w480-h960-rw",
       userBaseK: 500,
       tags: ["Android", "Kotlin", "Jetpack Compose"],
@@ -48,7 +48,7 @@ window.SITE_CONFIG = {
     {
       title: "Kino",
       description:
-        "Android Kino lottery app with results, statistics, and useful game information.",
+        "Android Kino lottery app with results, slips, statistics, and useful game information.",
       logo: "https://wsrv.nl/?url=https://play-lh.googleusercontent.com/KU5ux9VAtlL6L0db_fM1X3Sb_6-8FcQF0MjQWNjyGvpe2pwgaR814f4g5hy7G4GLmNk=w480-h960-rw",
       userBaseK: 350,
       tags: ["Android", "Kotlin", "XML"],
@@ -61,7 +61,7 @@ window.SITE_CONFIG = {
         "Greek lottery results app built with shared Kotlin Multiplatform business logic and Compose Multiplatform UI.",
       logo: "https://wsrv.nl/?url=https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/58/29/8b/58298b98-72c2-d4ae-5e26-f250e7b191cf/Placeholder.mill/400x400bb-75.webp",
       userBaseK: 5,
-      tags: ["Kotlin Multiplatform", "Compose Multiplatform", "iOS"],
+      tags: ["Compose Multiplatform", "iOS"],
       linkLabel: "Open App Store",
       link: "https://apps.apple.com/app/id6743926010"
     },
@@ -71,7 +71,7 @@ window.SITE_CONFIG = {
         "iOS TV guide app with 100+ channels, powered by Kotlin Multiplatform and Compose Multiplatform.",
       logo: "https://wsrv.nl/?url=https://play-lh.googleusercontent.com/QQJMXRVqOMS2ovFKwSvGoS3AE9SgIj38tmSiGFECGfpAK-dme_nHyHhuKwOBbGarAHs=w480-h960-rw",
       userBaseK: 1,
-      tags: ["Kotlin Multiplatform", "Compose Multiplatform", "iOS"],
+      tags: ["Kotlin Multiplatform", "iOS"],
       linkLabel: "Open App Store",
       link: "https://apps.apple.com/app/id6743926010"
     },
@@ -81,7 +81,7 @@ window.SITE_CONFIG = {
         "Web platform for live TV, radio, movies, and series across desktop and mobile browsers.",
       logo: "https://wsrv.nl/?url=https://play-lh.googleusercontent.com/QQJMXRVqOMS2ovFKwSvGoS3AE9SgIj38tmSiGFECGfpAK-dme_nHyHhuKwOBbGarAHs=w480-h960-rw",
       userBaseK: 200,
-      tags: ["Web", "Next.js", "Tailwind CSS", "TypeScript"],
+      tags: ["Web", "Next.js", "TypeScript"],
       linkLabel: "Visit Site",
       link: "https://www.greektv.live"
     }
